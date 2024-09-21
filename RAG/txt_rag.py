@@ -5,8 +5,9 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import OpenAI
+from langchain.embeddings import HuggingFaceEmbeddings
 
-loader = TextLoader("./../data/sgyy.txt")
+loader = TextLoader("./../data/sgyy_abstract.txt")
 documents = loader.load()
 #print(documents)
 
@@ -21,6 +22,8 @@ texts = text_splitter.split_documents(documents)
 print(f"分割后的文档数量: {len(texts)}")
 
 embeddings = OpenAIEmbeddings()
+#embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/Conan-embedding-v1")
+
 docsearch = Chroma.from_documents(texts, embeddings)
 
 qa = RetrievalQA.from_chain_type(
