@@ -13,4 +13,4 @@ def pipeline(user_input: str):
     )
     return result.choices[0].message.content
 
-print(pipeline("你好，你是什么版本？"))
+print(pipeline("刘备的兄弟有哪些？"))
