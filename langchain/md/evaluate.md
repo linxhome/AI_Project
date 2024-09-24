@@ -1,9 +1,17 @@
+```python
 from langsmith import Client
 from langsmith.evaluation import evaluate
+```
 
+
+```python
 client = Client()
+```
 
-# Define dataset: these are your test cases
+Define dataset: these are your test cases
+
+
+```python
 dataset_name = "Sample Dataset"
 dataset = client.create_dataset(dataset_name, description="A sample dataset in LangSmith.")
 client.create_examples(
@@ -17,11 +25,18 @@ client.create_examples(
     ],
     dataset_id=dataset.id,
 )
+```
 
-# Define your evaluator
+Define your evaluator
+
+
+```python
 def exact_match(run, example):
     return {"score": run.outputs["output"] == example.outputs["output"]}
+```
 
+
+```python
 experiment_results = evaluate(
     lambda input: "Welcome " + input['postfix'], # Your AI system goes here
     data=dataset_name, # The data to predict and grade over
@@ -32,5 +47,9 @@ experiment_results = evaluate(
       "revision_id": "beta"
     },
 )
+```
 
+
+```python
 print(experiment_results)
+```
