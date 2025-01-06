@@ -7,7 +7,7 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.llms import OpenAI
 from langchain.embeddings import HuggingFaceEmbeddings
 
-loader = TextLoader("./../data/sgyy_abstract.txt")
+loader = TextLoader("data/sgyy_abstract.txt")
 documents = loader.load()
 #print(documents)
 
