@@ -1,0 +1,3 @@
+from langchain_core.utils.function_calling import tool_example_to_messages
+
+tool_example_to_messages()
